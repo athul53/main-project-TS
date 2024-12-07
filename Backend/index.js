@@ -21,7 +21,8 @@ mongoose.connect(config.connectionString);
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "*" })); // Fixed the typo
+app.use(cors({
+     origin: "*" })); 
 
 // Create Account
 app.post("/Create-account", async (req, res) => {
@@ -367,10 +368,8 @@ app.get("/get-all-travel-stories", async (req, res) => {
     }
 });
 
-
-
-
-
-  
-app.listen(8000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 module.exports = app;
